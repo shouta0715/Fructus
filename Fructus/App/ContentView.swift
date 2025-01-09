@@ -11,7 +11,7 @@ struct ContentView: View {
   // MARK: - PROPERTIES
   let fruits: [Fruit] = fruitsData
   
-  @State private var isShowingSettings: Bool = false
+  @Binding var isShowingSettings: Bool
   
     var body: some View {
       NavigationStack {
@@ -30,16 +30,11 @@ struct ContentView: View {
           } label: {
             Image(systemName: "slider.horizontal.3")
           } //: Button
-          .sheet(isPresented: $isShowingSettings) {
-            SettingView()
-              .presentationDragIndicator(.visible)
-          }
-          
         } //: TOOLBAR
       }
     }
 }
 
 #Preview {
-    ContentView()
+  ContentView(isShowingSettings: .constant(false))
 }
